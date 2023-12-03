@@ -9,9 +9,8 @@
 	text-align: center;
 	margin-top: 10px;
 }
-#table{
-	margin: 5px auto;
-}
+
+
 table tr:not(:first-child){
 	cursor: pointer;
 	transition: all .25s ease-in-out;

@@ -55,7 +55,7 @@ p {
 .sidebar {
     position: fixed;
     left: 0%;
-    width: 190px;
+    width: 250px;
     top: 96px;
     bottom: 0px;
     border-right: 1px solid #eaeaea;
@@ -106,3 +106,34 @@ p {
     margin-right: 20px;
     margin-bottom: 16px;
   }
+
+.connlink {
+    border: 1px solid rgb(65, 203, 230);
+    border-radius: 3px;
+    padding: 7px 12px;
+    margin-left: 5%;
+}
+
+a {
+    color: black;
+}
+
+
+.slide {
+    position: fixed;
+    left: 0px;
+    z-index: 300;
+    top: 96px;
+    cursor: pointer;
+    border: none;
+    width: 35px;
+}
+
+.hide {
+    display: none;
+}
+
+.flash {
+    margin-left: 5%;
+    width: 100%;
+}

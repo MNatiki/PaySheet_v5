@@ -204,9 +204,9 @@ def tax_calculate(growth_earning, basic_salary, emp_status):
             # Calculate tax based on the current data entry
             tax = (growth_earning * (data.tax_rate / 100.0)) - data.tax_deduction
 
-        if emp_status == 'permanent':
-            pension = (basic_salary * (data.pension / 100.0))
-        break;
+            if emp_status == 'permanent':
+                pension = (basic_salary * (data.pension / 100.0))
+                break;
 
     return tax, pension
 

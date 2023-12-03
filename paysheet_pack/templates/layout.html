@@ -31,13 +31,14 @@
         {% endif %}
       </div>
   </header>
-  <nav class="sidebar">
+  <img class="slide" src={{ url_for('static', filename='icons/list.png') }} alt="">
+  <nav class="sidebar hide">
     <div class="innermid">
       <div>
         <img src={{ url_for('static', filename='icons/home.jpeg') }} alt="">
         <a href="{{ url_for('home') }}">Home</a>
 
-        </div>
+      </div>
       <div>
         <img src={{ url_for('static', filename='icons/about.jpeg') }} alt="">
         <a href="#">About</a>
@@ -54,6 +55,7 @@
       </div>
     </div>
   </nav>
+ 
   <main class="main">
     <div class="flash">
       {% with messages = get_flashed_messages(with_categories=true) %}
@@ -67,12 +69,10 @@
       {% endwith %}
       {% block content %}{% endblock %}
     </div>
-    <div class="content">
-      {% block update %}{% endblock %}
-    </div>
 </main>
 
 
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
