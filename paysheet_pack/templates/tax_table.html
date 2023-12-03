@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if datas %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tax_table_list.css') }}">
+    <div class="maintable">
+        <table id="table" border="1">
+            <tr class=" table-dark table-active text-uppercase text-white">
+                <th style="font-size:20px;">Row Id</th>
+                <th style="font-size:20px;">Minimum Pay</th>
+                <th style="font-size:20px;">Maximum Pay</th>
+                <th style="font-size:20px;">Tax Rate</th>
+                <th style="font-size:20px;">Tax Deduction</th>
+                <th style="font-size:20px;">Pension Rate</th>
+            </tr>
+            {% for data in datas %}
+                <tr border="1">
+                    <td style="font-size:20px;">{{ data.id }}</td>
+                    <td style="font-size:20px;">{{ data.min_pay }}</td>
+                    <td style="font-size:20px;">{{ data.max_pay }}</td>
+                    <td style="font-size:20px;">{{ data.tax_rate }}</td>
+                    <td style="font-size:20px;">{{ data.tax_deduction }}</td>
+                    <td style="font-size:20px;">{{ data.pension }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="container mt-5">
+        <form method="post" action="{{ url_for('tax_table') }}">
+            {{ form.hidden_tag() }}
+            <table id="taxTable" class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Minimum Pay</th>
+                        <th>Maximum Pay</th>
+                        <th>Tax Rate</th>
+                        <th>Pension Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ form.min_pay }}</td>
+                        <td>{{ form.max_pay }}</td>
+                        <td>{{ form.tax_rate }}</td>
+                        <td>{{ form.pension }}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    <div>
+    <small class="text-muted">
+        Do you want to Update tax table? <a class="but btn-outline-info" href="{{ url_for('tax_update') }}">Update</a>
+    </small>
+</div>
+{% else %}
+<p>No datas found.</p>
+{% endif %}
+{% endblock %}

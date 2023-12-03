@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if datas %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tax_table_list.css') }}">
+    <div class="maintable">
+        <table id="table" border="1">
+            <tr class=" table-dark table-active text-uppercase text-white">
+                <th style="font-size:20px;">Row Id</th>
+                <th style="font-size:20px;">Minimum Pay</th>
+                <th style="font-size:20px;">Maximum Pay</th>
+                <th style="font-size:20px;">Tax Rate</th>
+                <th style="font-size:20px;">Tax Deduction</th>
+                <th style="font-size:20px;">Pension Rate</th>
+            </tr>
+            {% for data in datas %}
+                <tr border="1">
+                    <td style="font-size:20px;">{{ data.id }}</td>
+                    <td style="font-size:20px;">{{ data.min_pay }}</td>
+                    <td style="font-size:20px;">{{ data.max_pay }}</td>
+                    <td style="font-size:20px;">{{ data.tax_rate }}</td>
+                    <td style="font-size:20px;">{{ data.tax_deduction }}</td>
+                    <td style="font-size:20px;">{{ data.pension }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+            <div class="employeeupdate">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Find, Update or Delete employee by Id</legend>
+        
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                {{ form.id.label(class="form-control-label") }}
+                                {% if form.id.errors %}
+                                    {{ form.id(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.id.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.id(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <button type="submit" name="view" class="btn btn-outline-info">Find</button>
+                            <button type="submit" name="update" class="btn btn-outline-info">Update</button>
+                            <button type="submit" name="delete" id="del" class="btn btn-outline-danger">Delete</button>
+                        </div>                     
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+{% else %}
+<p>No datas found.</p>
+{% endif %}
+{% endblock content %}

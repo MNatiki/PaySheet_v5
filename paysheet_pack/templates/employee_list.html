@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if datas %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tax_table_list.css') }}">
+    <div class="maintable">
+        <table id="table" border="1">
+            <tr class=" table-dark table-active text-uppercase text-white">
+                <th style="font-size:20px;">Id</th>
+                <th style="font-size:20px;">Name</th>
+                <th style="font-size:20px;">Phone No</th>
+                <th style="font-size:20px;">position</th>
+                <th style="font-size:20px;">Basic Salary</th>
+                <th style="font-size:20px;">Overtime</th>
+                <th style="font-size:20px;">Tran Allowance</th>
+                <th style="font-size:20px;">Other Allowance</th>
+                <th style="font-size:20px;">Growth Earning</th>
+                <th style="font-size:20px;">Tax</th>
+                <th style="font-size:20px;">Pension</th>
+                <th style="font-size:20px;">Other Deduction</th>
+                <th style="font-size:20px;">Total deduction</th>
+                <th style="font-size:20px;">Net Pay</th>
+            </tr>
+            {% for data in datas %}
+                <tr border="1">
+                    <td style="font-size:20px;">{{ data.emp_id }}</td>
+                    <td style="font-size:20px;">{{ data.emp_name }}</td>
+                    <td style="font-size:20px;">{{ data.phone }}</td>
+                    <td style="font-size:20px;">{{ data.position }}</td>
+                    <td style="font-size:20px;">{{ data.basic_salary }}</td>
+                    <td style="font-size:20px;">{{ data.overtime }}</td>
+                    <td style="font-size:20px;">{{ data.transportation_allowance }}</td>
+                    <td style="font-size:20px;">{{ data.allowance }}</td>
+                    <td style="font-size:20px;">{{ data.growth_earning }}</td>
+                    <td style="font-size:20px;">{{ data.tax }}</td>
+                    <td style="font-size:20px;">{{ data.pension }}</td>
+                    <td style="font-size:20px;">{{ data.other_deduction }}</td>
+                    <td style="font-size:20px;">{{ data.total_deduction }}</td>
+                    <td style="font-size:20px;">{{ data.net_pay }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+        <div class="employeeupdate">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Find, Update or Delete employee by Id</legend>
+        
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                {{ form.emp_id.label(class="form-control-label") }}
+                                {% if form.emp_id.errors %}
+                                    {{ form.emp_id(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.emp_id.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.emp_id(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="view" class="btn btn-outline-info">Find</button>
+                            <button type="submit" name="update" class="btn btn-outline-info">Update</button>
+                            <button type="submit" name="delete" id="del" class="btn btn-outline-danger">Delete</button>
+                        </div>                     
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+         
+    </div> 
+{% else %}
+    <p>No datas found.</p>
+{% endif %}
+{% endblock content %}

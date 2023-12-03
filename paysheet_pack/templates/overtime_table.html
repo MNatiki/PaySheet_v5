@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if datas %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tax_table_list.css') }}">
+    <div class="maintable">
+        <table id="table" border="1">
+            <tr class=" table-dark table-active text-uppercase text-white">
+                <th style="font-size:20px;">Row Id</th>
+                <th style="font-size:20px;">In time</th>
+                <th style="font-size:20px;">Out time</th>
+                <th style="font-size:20px;">Other</th>
+                <th style="font-size:20px;">Overtime rate</th>
+            </tr>
+            {% for data in datas %}
+                <tr border="1">
+                    <td style="font-size:20px;">{{ data.id }}</td>
+                    <td style="font-size:20px;">{{ data.in_time }}</td>
+                    <td style="font-size:20px;">{{ data.out_time }}</td>
+                    <td style="font-size:20px;">{{ data.other }}</td>
+                    <td style="font-size:20px;">{{ data.ov_rate }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% else %}
+<p>No datas found.</p>
+{% endif %}
+<div class="container mt-5">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="intakerow">
+            <legend class="border-bottom mb-4">Find, Update or Delete employee by Id</legend>
+                <div style="margin-right: 10px;">
+                    {{ form.in_time.label(class="form-control-label") }}
+                    {% if form.in_time.errors %}
+                        {{ form.in_time(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.in_time.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.in_time(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div style="margin-right: 10px;">
+                    {{ form.out_time.label(class="form-control-label") }}
+                    {% if form.out_time.errors %}
+                        {{ form.out_time(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.out_time.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.out_time(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div style="margin-right: 10px;">
+                    {{ form.other.label(class="form-control-label") }}
+                    {% if form.other.errors %}
+                        {{ form.other(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.other.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.other(type="text", class="form-control form-control-lg") }}
+                    {% endif %}
+                </div> 
+                <div>
+                    {{ form.ov_rate.label(class="form-control-label") }}
+                    {% if form.ov_rate.errors %}
+                        {{ form.ov_rate(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ov_rate.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.ov_rate(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>                     
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-info">Save</button>
+        </div>
+    </form>
+    
+</div>
+<div>
+<small class="text-muted">
+    Do you want to Update tax table? <a class="but btn-outline-info" href="{{ url_for('overtime_update') }}">Update</a>
+</small>
+</div>
+{% endblock %}

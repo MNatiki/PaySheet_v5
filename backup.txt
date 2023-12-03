@@ -1,0 +1,95 @@
+<div class="belowhead">
+        <nav class="sidebar">
+            <div class="sideleft"></div>
+            <div class="sidemiddle">
+                <div class="innermid">
+                    <div>
+                        <img src='icons/home.jpeg' alt="">
+                        Home</div>
+                    <div>
+                      <img src='icons/about.jpeg' alt="">
+                        About</div>
+                    <div>
+                      <img src='icons/add.jpeg' alt="">
+                        Add Employee</div>
+                    <div>
+                      <img src='icons/paysheet.jpeg' alt="">
+                        Payroll Sheet</div>
+                    <div>
+                      <img src='icons/settings.jpeg' alt="">
+                        Settings</div>
+                </div>  
+            </div>
+            <div class="sideright"></div>
+        </nav>
+       <div class="content">
+            <div class="mainimage">
+                <img src="icons/payrollmain.jpg" alt="">
+            </div>
+        </div>
+    </div> 
+
+
+
+    .sidebar {
+    position: fixed;
+    height: 100%;
+    width: 17%;
+    border-right: 1px solid #eaeaea;
+    margin-top: 5.499%;
+    box-shadow: 2px 2px 5px 0.05px #efeeee;
+    display: flex;
+    flex-direction: row;
+    padding-top: 60px;
+    background-color: rgb(252, 251, 251);
+    justify-content: space-between;
+
+}
+
+.sideleft {
+    display: flex;
+    flex: 1;
+    width: 0;
+}
+
+.sidemiddle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 1050px;
+    align-items: center;
+
+}
+
+.sideright {
+    display: flex;
+    flex: 1;
+    width: 0;
+}
+
+.innermid {
+    position: absolute;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.innermid div {
+    padding-bottom: 20px;
+}
+
+.sidebar img {
+    width: 25px;
+    height: 22px;
+    padding-bottom: 2px;
+    margin-right: 10px;
+}
+
+
+.content {
+    margin-left: 20%;
+    padding-top: 113px;
+}

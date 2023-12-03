@@ -1,0 +1,17 @@
+.dropdown_menu {
+    border: 1px solid orange;
+    width: 120px;
+}
+
+.dropdown_menu a {
+    display: block;
+}
+
+.dropdown_button {
+    width: 120px;
+    background-color: lightgreen;
+}
+
+.hide {
+    display: none;
+}
