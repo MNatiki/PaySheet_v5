@@ -3,12 +3,13 @@
 {% if datas %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tax_table_list.css') }}">
     <div class="maintable">
-        <table id="table" border="1">
+        <table border="1">
             <tr class=" table-dark table-active text-uppercase text-white">
                 <th style="font-size:20px;">Id</th>
                 <th style="font-size:20px;">Name</th>
                 <th style="font-size:20px;">Phone No</th>
                 <th style="font-size:20px;">position</th>
+                <th style="font-size:20px;">Emp Status</th>
                 <th style="font-size:20px;">Basic Salary</th>
                 <th style="font-size:20px;">Overtime</th>
                 <th style="font-size:20px;">Tran Allowance</th>
@@ -26,6 +27,7 @@
                     <td style="font-size:20px;">{{ data.emp_name }}</td>
                     <td style="font-size:20px;">{{ data.phone }}</td>
                     <td style="font-size:20px;">{{ data.position }}</td>
+                    <td style="font-size:20px;">{{ data.emp_status }}</td>
                     <td style="font-size:20px;">{{ data.basic_salary }}</td>
                     <td style="font-size:20px;">{{ data.overtime }}</td>
                     <td style="font-size:20px;">{{ data.transportation_allowance }}</td>
@@ -39,6 +41,42 @@
                 </tr>
             {% endfor %}
         </table>
+        {% if totals %}
+            <table class="totaltable" border="1">
+                <tr class=" table-dark table-active text-uppercase text-white">
+                    <th style="font-size:20px;">Id</th>
+                    <th style="font-size:20px;">Total</th>
+                    <th style="font-size:20px;">Basic Salary</th>
+                    <th style="font-size:20px;">Overtime</th>
+                    <th style="font-size:20px;">Tran Allowance</th>
+                    <th style="font-size:20px;">Other Allowance</th>
+                    <th style="font-size:20px;">Growth Earning</th>
+                    <th style="font-size:20px;">Tax</th>
+                    <th style="font-size:20px;">Pension(7%)</th>
+                    <th style="font-size:20px;">Pension(11%)</th>
+                    <th style="font-size:20px;">Other Deduction</th>
+                    <th style="font-size:20px;">Total deduction</th>
+                    <th style="font-size:20px;">Net Pay</th
+                </tr>
+                <tr border="1">
+                    <td style="font-size:20px;">101</td>
+                    <td style="font-size:20px;">total</td> <!-- Replace 'id' with the correct key -->
+                    <td style="font-size:20px;">{{ totals.total_basic_salary }}</td>
+                    <td style="font-size:20px;">{{ totals.total_overtime }}</td>
+                    <td style="font-size:20px;">{{ totals.total_transportation_allowance }}</td>
+                    <td style="font-size:20px;">{{ totals.total_allowance }}</td>
+                    <td style="font-size:20px;">{{ totals.total_growth_earning }}</td>
+                    <td style="font-size:20px;">{{ totals.total_tax }}</td>
+                    <td style="font-size:20px;">{{ totals.total_pension }}</td>
+                    <td style="font-size:20px;">{{ totals.payroll_tax }}</td>
+                    <td style="font-size:20px;">{{ totals.total_other_deduction }}</td>
+                    <td style="font-size:20px;">{{ totals.total_total_deduction }}</td>
+                    <td style="font-size:20px;">{{ totals.total_net_pay }}</td>
+                </tr>
+            </table>
+            {% else %}
+                <p>No totals found.</p>
+            {% endif %}
     </div>
 
         <div class="employeeupdate">

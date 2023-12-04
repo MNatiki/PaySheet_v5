@@ -194,6 +194,7 @@ def overtime_update():
 
     return render_template('overtime_update.html', title='Overtime_update', data_entry=data_entry, form=form, datas=datas)
 
+
 def tax_calculate(growth_earning, basic_salary, emp_status):
     datas = TaxEntry.query.all()
     tax = 0.0
@@ -211,22 +212,61 @@ def tax_calculate(growth_earning, basic_salary, emp_status):
     return tax, pension
 
 
-def ov_calculate(basic_salary, emp_id):
-    datas = Employeeinfo.query.filter_by(emp_id=emp_id).first()
-    ov_data = OvertimeEntry.query.all()
-    ov = 0.0
+def total():
+    datas = Employeeinfo.query.all()
 
-    for data in ov_data:
-        # evaluate duration on working hour
-        if datas.in_time == ov_data.in_time and datas.out_time == ov_data.out_time:
-            ov = (basic_salary / 160) * datas.duration * data.ov_rate
-            break;
-        elif datas.other == 'weekend day' or datas.other == 'weekend day':
-            ov = (basic_salary / 160) * datas.duration * data.ov_rate
-        elif datas.other == 'holiday' or datas.other == 'holiday':
-            ov = (basic_salary / 160) * datas.duration * data.ov_rate
-    return ov
+    # Initialize variables
+    total_basic_salary = 0
+    total_growth_earning = 0
+    total_overtime = 0
+    total_transportation_allowance = 0
+    total_allowance = 0
+    total_tax = 0
+    total_pension = 0
+    total_other_deduction = 0
+    total_total_deduction = 0
+    total_net_pay = 0
+    total_payroll_tax = 0
 
+    for data in datas:
+        if data.basic_salary:
+            total_basic_salary += data.basic_salary
+        if data.overtime:
+            total_overtime += data.overtime
+        if data.transportation_allowance:
+            total_transportation_allowance += data.transportation_allowance
+        if data.allowance:
+            total_allowance += data.allowance
+        if data.tax:
+            total_tax += data.tax
+        if data.pension:
+            total_pension += data.pension
+        if data.other_deduction:
+            total_other_deduction += data.other_deduction
+        if data.total_deduction:
+            total_total_deduction += data.total_deduction
+        if data.net_pay:
+            total_net_pay += data.net_pay
+        if data.growth_earning:
+            total_growth_earning += data.growth_earning
+        if data.emp_status == 'permanent':
+            total_payroll_tax += data.basic_salary
+    payroll_tax = (total_payroll_tax * 0.11)
+
+    # Now you can use or return these total values as needed
+    return {
+        "payroll_tax": payroll_tax,
+        "total_basic_salary": total_basic_salary,
+        "total_growth_earning": total_growth_earning,
+        "total_overtime": total_overtime,
+        "total_transportation_allowance": total_transportation_allowance,
+        "total_allowance": total_allowance,
+        "total_tax": total_tax,
+        "total_pension": total_pension,
+        "total_other_deduction": total_other_deduction,
+        "total_total_deduction": total_total_deduction,
+        "total_net_pay": total_net_pay
+    }
 
 
 
@@ -263,10 +303,12 @@ def new_employee():
         return redirect(url_for('home'))
     return render_template('new_employee.html', title='New_employee', form=form)
 
+
 @app.route("/company/employee_list", methods=['GET', 'POST'])
 @login_required
 def employee_list():
     form = EmployeeListForm()
+    totals = total()
     datas = Employeeinfo.query.filter_by(company_id=current_user.id)
     emp_id = form.emp_id.data
     if 'view' in request.form:
@@ -282,7 +324,7 @@ def employee_list():
             flash(f'Employee with ID {emp_id} not found', 'danger')
     elif 'update' in request.form:
         return redirect(url_for('employee_update', emp_id=emp_id))
-    return render_template('employee_list.html', title='Employee_list', form=form, datas=datas)
+    return render_template('employee_list.html', title='Employee_list', form=form, datas=datas, totals=totals)
 
 
 @app.route("/company/<int:emp_id>", methods=['GET', 'POST'])
