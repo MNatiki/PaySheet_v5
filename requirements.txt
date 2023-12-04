@@ -6,3 +6,4 @@ Flask-Bcrypt
 pymysql
 flask-login
 Pillow
+flask-mail
