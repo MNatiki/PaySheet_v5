@@ -336,7 +336,7 @@ def employee_update(emp_id):
         elif portion > 2200 and form.transportation_allowance.data > 2200:
             taxable_allowance = (form.transportation_allowance.data - 2200)
 
-        growth_earning = (data_entry.basic_salary) + (taxable_allowance) + (data_entry.overtime)
+        growth_earning = (data_entry.basic_salary) + (taxable_allowance) + (data_entry.overtime) + (form.allowance.data)
         tax_info = tax_calculate(growth_earning, data_entry.basic_salary, data_entry.emp_status)
         total_deduction = (tax_info[0]) + (tax_info[1]) + (data_entry.other_deduction)
         net_pay = (growth_earning - total_deduction)
