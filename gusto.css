@@ -3,6 +3,7 @@ body {
     height: 3000px;
     padding-top: 110px;
     padding-left: 200px;
+    position: relative;
 }
 
 .mainheader {
@@ -88,11 +89,12 @@ p {
 
 .content {
     background-color: orange;
-    width: 100px;
     height: 100px;
+    display: block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    z-index: 300;
 }
 
-.mainimage img {
-    width: 200px;
-    height: 200px;
-}
+

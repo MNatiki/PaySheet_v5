@@ -64,11 +64,11 @@ class TaxtableForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class NewemployeForm(FlaskForm):
-    emp_name = StringField('Employee Name*', validators=[DataRequired()]) 
+    emp_name = StringField('Employee FullName*', validators=[DataRequired()]) 
     position = StringField('Position*', validators=[DataRequired()])
     phone = StringField('Phone Number*', validators=[DataRequired()])
     basic_salary = StringField('Basic Salary*', validators=[DataRequired()])
-    emp_status = StringField('Employee Status', validators=[DataRequired()])
+    emp_status = StringField('Employee Status* (permanent or temporary)', validators=[DataRequired()])
     overtime = StringField('Over Time(If It has else leave empty)')
     allowance = StringField('Allowance(If It has else leave empty)')
     other_deduction = StringField('Other Deduction(If It has else leave empty)')

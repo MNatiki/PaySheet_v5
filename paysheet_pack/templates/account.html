@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
-      <div class="media">
-        <img class="rounded-circle account-img" src="{{ image_file }}">
-        <div class="media-body">
-          <h2 class="account-heading">{{ current_user.company_name }}</h2>
-          <p class="text-secondary">{{ current_user.email }}</p>
+    <div class="account-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ image_file }}">
+            <div class="media-body">
+            <h2 class="account-heading">{{ current_user.company_name }}</h2>
+            <p class="text-secondary">{{ current_user.email }}</p>
+            </div>
         </div>
-      </div>
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
+            <fieldset class="form-group  account-section">
                 <legend class="border-bottom mb-4">Account Info</legend>
                 <div class="form-group">
                     {{ form.company_name.label(class="form-control-label") }}
@@ -51,10 +51,8 @@
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
+                <a class="but btn-outline-info connlink" href="{{ url_for('logout') }}">Logout</a>
             </div>
         </form>
-    </div>
-    <div >
-            <a class="but btn-outline-info connlink" href="{{ url_for('logout') }}">Logout</a>
     </div>
 {% endblock content %}

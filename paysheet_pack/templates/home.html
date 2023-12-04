@@ -1,1 +1,58 @@
 {% extends "layout.html" %}
+{% block content %}
+
+    <div class="homemain">
+        <div class="home">
+            <div class="homediv">
+                <section>
+                    <h2>Why Choose Our Software?</h2>
+                    <p>Our paysheet software is designed to make payroll management for companies simple and clear. Here's why you should create an account:</p>
+                    <ul>
+                        <li><strong>Easy to Use:</strong> Our user-friendly interface makes payroll processing a breeze.</li>
+                        <li><strong>Accuracy:</strong> Ensure precise calculations for your employees with our advanced payroll system.</li>
+                        <li><strong>Customization:</strong> Tailor the software to fit your company's unique needs and policies.</li>
+                    </ul>
+                </section>
+            
+                {% if current_user.is_authenticated %}
+                    <section>
+                        <h2>Get Started Today!</h2>
+                        <p>If you're ready to experience the benefits of our paysheet software, take the first step by add your company employee:</p>
+                        <a href="{{ url_for('new_employee') }}" title="Add Employee">Add Company Employee</a>
+                    </section>
+                    <section>
+                        <h2>Get Started Today!</h2>
+                        <p>If you're ready to experience the benefits of our paysheet software, If you add employee you can see your comany payroll sheet:</p>
+                        <a href="{{ url_for('employee_list') }}" title="Payroll Sheet">Prepare Payroll Sheet</a>
+                    </section>
+                {% else %}
+                    <section>
+                        <h2>Get Started Today!</h2>
+                        <p>If you're ready to experience the benefits of our paysheet software, take the first step by creating your account:</p>
+                        <a href="{{ url_for('register') }}" title="Create Your Account">Create Your Account</a>
+                    </section>
+
+                    <section>
+                        <h2>Already Have an Account?</h2>
+                        <p>If you've already created an account, you can <a href="{{ url_for('login') }}" title="Log In">log in here</a> to access your paysheet dashboard.</p>
+                    </section>
+                {% endif %}
+            </div>
+        </div>
+        <div class="homeimg">
+            <header>
+                <h2>Welcome to Your Paysheet Software</h2>
+                <p>If you want to simplify your work and ensure accuracy in your company's payroll system, you're in the right place!</p>
+            </header>
+            <div>
+                <img class="homemainimg" src="{{ url_for('static', filename='icons/homeimg.jpg') }}" alt="">
+            </div>
+            <footer class="homefooter">
+                <small class="text-muted">
+                    Have questions? Contact our support team at <a href="#">support@paysheetsoftware.com</a>
+                </small>
+            </footer>
+        </div>
+    </div>
+
+{% endblock %}

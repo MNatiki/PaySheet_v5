@@ -1,8 +1,8 @@
 body {
     margin: 0px;
-    height: 3000px;
     padding-top: 110px;
     padding-left: 200px;
+    position: relative;
 }
 
 .mainheader {
@@ -98,6 +98,13 @@ p {
 .content-section {
     margin-left: 5%;
     margin-right: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.account-section {
+    padding-right: 50%;
 }
 
 .account-img {
@@ -110,8 +117,9 @@ p {
 .connlink {
     border: 1px solid rgb(65, 203, 230);
     border-radius: 3px;
-    padding: 7px 12px;
-    margin-left: 5%;
+    padding: 9.6px 12px;
+    margin-left: 0.5%;
+    padding-top: 5px;
 }
 
 a {
@@ -136,3 +144,98 @@ a {
 .flash {
     margin-left: 5%;
 }
+
+.expanded {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+}
+
+.homemain {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.home {
+    width: 600px;
+    height: 500px;
+    margin-right: 20px;
+}
+
+.homediv p {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding-left: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.homediv a {
+    color: #f45d48;
+} 
+
+.homeimg p {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding-left: 12px;
+}
+
+.homemainimg {
+    padding: 10px 10px;
+    width: 900px;
+    height: 600px;
+}
+
+section {
+    margin: 0px;
+    margin-bottom: 20px;
+    border: 0.5px solid rgb(200, 200, 200);
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.homeimg header {
+    border: 0.5px solid rgb(200, 200, 200);
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.homeimg a {
+    color: #f45d48;
+} 
+
+.homefooter {
+    padding-left: 450px;
+}
+
+.loginimg {
+    width: 800px;
+    height: 600px;
+}
+
+.form-group {
+    width: 130%;
+}
+
+.form {
+    padding-top: 120px;
+}
+
+legend {
+    color: #f45d48;
+    font-weight: bold;
+}
+
+.signin {
+    margin-left: 70px;
+}
+
+#updatesubmit {
+    padding-left: 40px;
+}
+

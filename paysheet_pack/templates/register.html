@@ -62,9 +62,12 @@
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
         </form>
+        <div>
+            <img class="loginimg" src="{{ url_for('static', filename='icons/registerimg.jpg') }}" alt="">
+        </div>
     </div>
-    <div id="connlink">
-        <small class=" text-muted">
+    <div>
+        <small class="text-muted signin">
             Already Have An Account? <a class="but btn-outline-info" href="{{ url_for('login') }}">Sign In</a>
         </small>
     </div>
