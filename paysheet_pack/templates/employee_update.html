@@ -163,6 +163,19 @@
                         {% endif %}
                     </div>
                     <div>
+                        {{ form.non_taxable_allo.label(class="form-control-label") }}
+                        {% if form.non_taxable_allo.errors %}
+                            {{ form.non_taxable_allo(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.non_taxable_allo.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.non_taxable_allo(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div>
                         {{ form.other_deduction.label(class="form-control-label") }}
                         {% if form.other_deduction.errors %}
                             {{ form.other_deduction(class="form-control form-control-lg is-invalid") }}

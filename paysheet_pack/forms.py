@@ -91,7 +91,7 @@ class EmployeeListForm(FlaskForm):
     company_id = IntegerField('Company Id ', validators=[DataRequired()])
     growth_earning = FloatField('Growth Earning', validators=[DataRequired()])
     overtime = FloatField('Over Time')
-    allowance = FloatField('Other Allowance', validators=[DataRequired()])
+    allowance = FloatField('Taxable Allowance', validators=[DataRequired()])
     tax = FloatField('Tax', validators=[DataRequired()])
     pension = FloatField('Pension', validators=[DataRequired()])
     other_deduction = FloatField('Other Deduction', validators=[DataRequired()])
@@ -103,6 +103,7 @@ class EmployeeListForm(FlaskForm):
     duration = StringField('Overtime (Duration)')
     net_pay = FloatField('Net Pay', validators=[DataRequired()])
     transportation_allowance = FloatField('Transportation Allowance', validators=[DataRequired()])
+    non_taxable_allo = FloatField('Non Taxable Allowance', validators=[DataRequired()])
     submit = SubmitField('Done')
 
 

@@ -12,8 +12,9 @@
                 <th style="font-size:20px;">Emp Status</th>
                 <th style="font-size:20px;">Basic Salary</th>
                 <th style="font-size:20px;">Overtime</th>
-                <th style="font-size:20px;">Tran Allowance</th>
-                <th style="font-size:20px;">Other Allowance</th>
+                <th style="font-size:20px;">Transportation Allowance</th>
+                <th style="font-size:20px;">Non Taxable Allowance</th>
+                <th style="font-size:20px;">Taxable Allowance</th>
                 <th style="font-size:20px;">Growth Earning</th>
                 <th style="font-size:20px;">Tax</th>
                 <th style="font-size:20px;">Pension(7%)</th>
@@ -32,6 +33,7 @@
                     <td style="font-size:20px;">{{ data.basic_salary }}</td>
                     <td style="font-size:20px;">{{ data.overtime }}</td>
                     <td style="font-size:20px;">{{ data.transportation_allowance }}</td>
+                    <td style="font-size:20px;">{{ data.non_taxable_allo }}</td>
                     <td style="font-size:20px;">{{ data.allowance }}</td>
                     <td style="font-size:20px;">{{ data.growth_earning }}</td>
                     <td style="font-size:20px;">{{ data.tax }}</td>
@@ -52,6 +54,7 @@
                     <td style="font-size:20px;">{{ totals.total_basic_salary }}</td>
                     <td style="font-size:20px;">{{ totals.total_overtime }}</td>
                     <td style="font-size:20px;">{{ totals.total_transportation_allowance }}</td>
+                    <td style="font-size:20px;">{{ totals.non_taxable_allo }}</td>
                     <td style="font-size:20px;">{{ totals.total_allowance }}</td>
                     <td style="font-size:20px;">{{ totals.total_growth_earning }}</td>
                     <td style="font-size:20px;">{{ totals.total_tax }}</td>

@@ -217,7 +217,7 @@ def tax_calculate(growth_earning, basic_salary, emp_status):
 
 
 def total():
-    datas = Employeeinfo.query.all()
+    datas = Employeeinfo.query.filter_by(company_id=current_user.id)
 
     # Initialize variables
     total_basic_salary = 0
@@ -231,6 +231,7 @@ def total():
     total_total_deduction = 0
     total_net_pay = 0
     total_payroll_tax = 0
+    total_non_taxable_allo = 0
 
     for data in datas:
         if data.basic_salary:
@@ -239,6 +240,8 @@ def total():
             total_overtime += data.overtime
         if data.transportation_allowance:
             total_transportation_allowance += data.transportation_allowance
+        if data.non_taxable_allo:
+            total_non_taxable_allo += data.non_taxable_allo
         if data.allowance:
             total_allowance += data.allowance
         if data.tax:
@@ -278,6 +281,7 @@ def total():
 @login_required
 def new_employee():
     form = NewemployeForm()
+    totals = total()
     if form.validate_on_submit():
         emp_name = form.emp_name.data
         position = form.position.data
@@ -304,8 +308,8 @@ def new_employee():
         db.session.commit()
         # Filter by phone to get the employee instance
         flash('New employee successfully added', 'success')
-        return redirect(url_for('home'))
-    return render_template('new_employee.html', title='New_employee', form=form)
+        return redirect(url_for('employee_list'))
+    return render_template('new_employee.html', title='New_employee', form=form, totals=totals)
 
 
 @app.route("/company/employee_list", methods=['GET', 'POST'])
@@ -335,6 +339,7 @@ def employee_list():
 @login_required
 def employee_update(emp_id):
     form = EmployeeListForm()
+    totals = total()
     data_entry = Employeeinfo.query.filter_by(emp_id=emp_id).first()
     if data_entry is None:
         flash(f'Employee with ID {emp_id} not found', 'danger')
@@ -366,6 +371,7 @@ def employee_update(emp_id):
 
         data_entry.overtime = ov
         data_entry.allowance = form.allowance.data
+        data_entry.non_taxable_allo = form.non_taxable_allo.data
         data_entry.other_deduction = form.other_deduction.data
         data_entry.transportation_allowance = form.transportation_allowance.data
         # calculate the net pay
@@ -386,7 +392,7 @@ def employee_update(emp_id):
         tax_info = tax_calculate(growth_earning, data_entry.basic_salary, data_entry.emp_status)
         total_deduction = (tax_info[0]) + (tax_info[1]) + (data_entry.other_deduction)
         net_pay = (growth_earning - total_deduction)
-        data_entry.growth_earning = growth_earning
+        data_entry.growth_earning = growth_earning = (data_entry.basic_salary) + (taxable_allowance) + (data_entry.overtime) + (form.allowance.data) + (form.non_taxable_allo.data)
         data_entry.tax = tax_info[0]
         data_entry.pension = tax_info[1]
         data_entry.total_deduction = total_deduction
@@ -407,9 +413,10 @@ def employee_update(emp_id):
     form.duration.data = data_entry.duration
     form.other.data = data_entry.other
     form.transportation_allowance.data = data_entry.transportation_allowance
+    form.non_taxable_allo.data = data_entry.non_taxable_allo
     form.allowance.data = data_entry.allowance
     form.other_deduction.data = data_entry.other_deduction  
-    return render_template('employee_update.html', title='Employee_update', form=form, data_entry=data_entry)
+    return render_template('employee_update.html', title='Employee_update', form=form, data_entry=data_entry, totals=totals)
 
 
 def send_reset_email(user):

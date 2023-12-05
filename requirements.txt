@@ -7,3 +7,4 @@ pymysql
 flask-login
 Pillow
 flask-mail
+itsdangerous==2.0.1

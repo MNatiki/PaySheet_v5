@@ -48,6 +48,7 @@ class Employeeinfo(db.Model):
     emp_status = db.Column(db.String(50), nullable=True, default=0.0)
     allowance = db.Column(db.Float, nullable=True, default=0.0)
     transportation_allowance = db.Column(db.Float, nullable=True, default=0.0)
+    non_taxable_allo = db.Column(db.Float, nullable=True, default=0.0)
     tax = db.Column(db.Float, nullable=True, default=0.0)
     pension = db.Column(db.Float, nullable=True, default=0.0)
     other_deduction = db.Column(db.Float, nullable=True, default=0.0)
