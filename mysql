@@ -1,0 +1,78 @@
+create database paysheet;
+create database paysheet_v3;
+drop database paysheet_v3;
+drop table employeeinfo;
+drop table tax_entry;
+drop table overtime_entry;
+select * from employeeinfo;
+select * from overtime_entry;
+select * from company;
+select * from tax_entry;
+use paysheet;
+use paysheet_v3;
+
+
+CREATE TABLE company (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    image_file VARCHAR(20) NOT NULL DEFAULT 'default.jpg',
+    password VARCHAR(60) NOT NULL
+);
+
+alter table employeeinfo add column in_time varchar(50) default NULL;
+alter table employeeinfo add column out_time varchar(50) default NULL;
+alter table employeeinfo add column duration varchar(50) default NULL;
+alter table employeeinfo add column other varchar(50) default NULL;
+alter table employeeinfo add column transportation_allowance varchar(50) default NULL;
+alter table employeeinfo add column emp_status varchar(50) default NULL;
+
+
+CREATE TABLE employeeinfo (
+    emp_id INT AUTO_INCREMENT PRIMARY KEY,
+    emp_name VARCHAR(50) NOT NULL,
+    position VARCHAR(50) DEFAULT NULL,
+    in_time varchar(50) default NULL,
+    out_time varchar(50) default NULL,
+    other varchar(50) default NULL,
+    duration varchar(50) default NULL,
+    id INT,
+    company_id INT NOT NULL,
+    phone INT,
+    growth_earning FLOAT DEFAULT 0.0,
+    basic_salary FLOAT DEFAULT NULL,
+    overtime FLOAT DEFAULT 0.0,
+    allowance FLOAT DEFAULT 0.0,
+    emp_status varchar(50) default NULL,
+    tax FLOAT DEFAULT 0.0,
+    pension FLOAT DEFAULT 0.0,
+    other_deduction FLOAT DEFAULT 0.0,
+    total_deduction FLOAT DEFAULT 0.0,
+    net_pay FLOAT DEFAULT NULL,
+    FOREIGN KEY (id) REFERENCES company(id)
+);
+
+CREATE TABLE tax_entry (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    min_pay FLOAT NOT NULL,
+    max_pay FLOAT NOT NULL,
+    tax_rate FLOAT NOT NULL,
+    tax_deduction FLOAT DEFAULT 0.0,
+    pension FLOAT DEFAULT 0.0,
+    employee_id INT DEFAULT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employeeinfo(emp_id)
+);
+
+alter table overtime_entry add column other varchar(50) default NULL;
+
+CREATE TABLE overtime_entry (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    in_time FLOAT default NULL,
+    out_time FLOAT default NULL,
+    other varchar(50) default NULL,
+    ov_rate FLOAT NOT NULL,
+    employee_id INT DEFAULT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employeeinfo(emp_id)
+);
+
+git clone https://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@github.com/MNatiki/PaySheet_v5

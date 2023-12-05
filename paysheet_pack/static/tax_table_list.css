@@ -8,6 +8,7 @@
 .maintable{
 	text-align: center;
 	margin-top: 10px;
+	width: 60%;
 }
 
 
@@ -88,4 +89,9 @@ updateform{
 .totaltable {
 	margin: 15px;
 	margin-left: -1px;
+	width: 60%;
+}
+
+.employeeupdate {
+	width: 30%;
 }

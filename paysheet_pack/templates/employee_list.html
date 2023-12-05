@@ -16,7 +16,8 @@
                 <th style="font-size:20px;">Other Allowance</th>
                 <th style="font-size:20px;">Growth Earning</th>
                 <th style="font-size:20px;">Tax</th>
-                <th style="font-size:20px;">Pension</th>
+                <th style="font-size:20px;">Pension(7%)</th>
+                <th style="font-size:20px;">Payroll Tax(11%)</th>
                 <th style="font-size:20px;">Other Deduction</th>
                 <th style="font-size:20px;">Total deduction</th>
                 <th style="font-size:20px;">Net Pay</th>
@@ -35,32 +36,19 @@
                     <td style="font-size:20px;">{{ data.growth_earning }}</td>
                     <td style="font-size:20px;">{{ data.tax }}</td>
                     <td style="font-size:20px;">{{ data.pension }}</td>
+                    <td style="font-size:20px;">-</td>
                     <td style="font-size:20px;">{{ data.other_deduction }}</td>
                     <td style="font-size:20px;">{{ data.total_deduction }}</td>
                     <td style="font-size:20px;">{{ data.net_pay }}</td>
                 </tr>
             {% endfor %}
-        </table>
-        {% if totals %}
-            <table class="totaltable" border="1">
-                <tr class=" table-dark table-active text-uppercase text-white">
-                    <th style="font-size:20px;">Id</th>
-                    <th style="font-size:20px;">Total</th>
-                    <th style="font-size:20px;">Basic Salary</th>
-                    <th style="font-size:20px;">Overtime</th>
-                    <th style="font-size:20px;">Tran Allowance</th>
-                    <th style="font-size:20px;">Other Allowance</th>
-                    <th style="font-size:20px;">Growth Earning</th>
-                    <th style="font-size:20px;">Tax</th>
-                    <th style="font-size:20px;">Pension(7%)</th>
-                    <th style="font-size:20px;">Pension(11%)</th>
-                    <th style="font-size:20px;">Other Deduction</th>
-                    <th style="font-size:20px;">Total deduction</th>
-                    <th style="font-size:20px;">Net Pay</th
-                </tr>
+            {% if totals %}
                 <tr border="1">
                     <td style="font-size:20px;">101</td>
-                    <td style="font-size:20px;">total</td> <!-- Replace 'id' with the correct key -->
+                    <td style="font-size:20px;">total</td>
+                    <td style="font-size:20px;">-</td>
+                    <td style="font-size:20px;">-</td>
+                    <td style="font-size:20px;">-</td>
                     <td style="font-size:20px;">{{ totals.total_basic_salary }}</td>
                     <td style="font-size:20px;">{{ totals.total_overtime }}</td>
                     <td style="font-size:20px;">{{ totals.total_transportation_allowance }}</td>
@@ -73,10 +61,10 @@
                     <td style="font-size:20px;">{{ totals.total_total_deduction }}</td>
                     <td style="font-size:20px;">{{ totals.total_net_pay }}</td>
                 </tr>
-            </table>
-            {% else %}
-                <p>No totals found.</p>
-            {% endif %}
+        {% else %}
+            <p>No totals found.</p>
+        {% endif %}
+        </table>
     </div>
 
         <div class="employeeupdate">
