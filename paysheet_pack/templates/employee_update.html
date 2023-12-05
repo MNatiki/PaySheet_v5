@@ -3,9 +3,9 @@
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group content-section">
-                <legend class="border-botton mb-4">Update Employee Information</legend>
-                <div class="update1">
+            <fieldset class="form-group content-section updateformfield">
+                <legend>Update Employee Information</legend>
+                <div>
                     <h5>Employee Basic Information</h5>
                     <div class="form-group">
                         {{ form.emp_name.label(class="form-control-label") }}
@@ -21,7 +21,7 @@
                         {% endif %}
                     </div>
                     
-                    <div class="form-group">
+                    <div>
                         {{ form.phone.label(class="form-control-label") }}
                         {% if form.phone.errors %}
                             {{ form.phone(class="form-control form-control-lg is-invalid") }}
@@ -34,7 +34,7 @@
                             {{ form.phone(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.position.label(class="form-control-label") }}
                         {% if form.position.errors %}
                             {{ form.position(class="form-control form-control-lg is-invalid") }}
@@ -47,7 +47,7 @@
                             {{ form.position(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.basic_salary.label(class="form-control-label") }}
                         {% if form.basic_salary.errors %}
                             {{ form.basic_salary(class="form-control form-control-lg is-invalid") }}
@@ -60,7 +60,7 @@
                             {{ form.basic_salary(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.emp_status.label(class="form-control-label") }}
                         {% if form.emp_status.errors %}
                             {{ form.emp_status(class="form-control form-control-lg is-invalid") }}
@@ -78,7 +78,7 @@
                 
                 <div class="update1">
                     <h5>Employee Working Overtimes</h5>
-                    <div class="form-group">
+                    <div>
                         {{ form.in_time.label(class="form-control-label") }}
                         {% if form.in_time.errors %}
                             {{ form.in_time(class="form-control form-control-lg is-invalid") }}
@@ -91,7 +91,7 @@
                             {{ form.in_time(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.out_time.label(class="form-control-label") }}
                         {% if form.out_time.errors %}
                             {{ form.out_time(class="form-control form-control-lg is-invalid") }}
@@ -104,7 +104,7 @@
                             {{ form.out_time(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.other.label(class="form-control-label") }}
                         {% if form.other.errors %}
                             {{ form.other(class="form-control form-control-lg is-invalid") }}
@@ -117,7 +117,7 @@
                             {{ form.other(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.duration.label(class="form-control-label") }}
                         {% if form.duration.errors %}
                             {{ form.duration(class="form-control form-control-lg is-invalid") }}
@@ -136,7 +136,7 @@
 
                 <div class="update1">
                     <h5>Employee Working Allowances</h5>
-                    <div class="form-group">
+                    <div>
                         {{ form.transportation_allowance.label(class="form-control-label") }}
                         {% if form.transportation_allowance.errors %}
                             {{ form.transportation_allowance(class="form-control form-control-lg is-invalid") }}
@@ -149,7 +149,7 @@
                             {{ form.transportation_allowance(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.allowance.label(class="form-control-label") }}
                         {% if form.allowance.errors %}
                             {{ form.allowance(class="form-control form-control-lg is-invalid") }}
@@ -162,7 +162,7 @@
                             {{ form.allowance(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
+                    <div>
                         {{ form.other_deduction.label(class="form-control-label") }}
                         {% if form.other_deduction.errors %}
                             {{ form.other_deduction(class="form-control form-control-lg is-invalid") }}

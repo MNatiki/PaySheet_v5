@@ -194,13 +194,15 @@ a {
 section {
     margin: 0px;
     margin-bottom: 20px;
-    border: 0.5px solid rgb(200, 200, 200);
+    border: 1px solid #eaeaea;
+    box-shadow: 2px 2px 5px 0.05px #ccc8c8;
     border-radius: 2px;
     padding: 5px;
 }
 
 .homeimg header {
-    border: 0.5px solid rgb(200, 200, 200);
+    border: 1px solid #eaeaea;
+    box-shadow: 2px 2px 5px 0.05px #ccc8c8;
     border-radius: 2px;
     padding: 5px;
 }
@@ -236,6 +238,23 @@ legend {
 }
 
 #updatesubmit {
-    padding-left: 40px;
+    padding-left: 45px;
 }
+
+.formfield {
+    border: 1px solid #eaeaea;
+    box-shadow: 2px 2px 5px 0.05px #ccc8c8;
+    padding: 30px;
+    width: 200%;
+    margin-top: 20px;
+}
+
+.updateformfield {
+    border: 1px solid #eaeaea;
+    box-shadow: 2px 2px 5px 0.05px #ccc8c8;
+    padding: 30px;
+    width: 140%;
+    margin-top: 20px;
+}
+
 
